@@ -62,6 +62,7 @@ class PhotoViewController: UIViewController, MKMapViewDelegate, UICollectionView
         collectionView.delegate = self
         setupFetchedResultsController()
         noImagesLabel.isHidden = true
+        FlickrAPI.flickrGETSearchPhotos(lat: pin.latitude, lon: pin.longitude, completionHandler: getImagesFromFlickr(photos:error:))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -139,7 +140,7 @@ class PhotoViewController: UIViewController, MKMapViewDelegate, UICollectionView
     @IBAction func newCollectionButtonPressed(_ sender: Any) {
         newCollectionButton.isEnabled = false
         flickrPhotos = []
-        photoURL = []
+        //photoURL = []
         
         if let objects = fetchedResultsController.fetchedObjects {
             for object in objects {

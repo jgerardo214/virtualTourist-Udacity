@@ -10,32 +10,34 @@ import UIKit
 extension PhotoViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-           
-           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
         
-           
-           
-               let object = fetchedResultsController.object(at: indexPath)
-               if object.photo == nil {
-                   cell.imageView.image = UIImage(named: "placeholder")
-                
-                
-                DispatchQueue.global().async { [self] in
-                    FlickrAPI.downloadImages(imageURL: URL(string: photoURL[indexPath.row])!) { [self] data, error in
-                           if let data = data {
-                               cell.imageView.image = UIImage(data: data)
-                               self.flickrPhotos[indexPath.row].photo = data
-                               self.dataController.autoSaveViewContext()
-                               if self.fetchedResultsController.fetchedObjects?.count == self.flickrPhotos.count {
-                                   self.newCollectionButton.isEnabled = true
-                               }
-                           }
-                       }
-                   }
-               }
-           
-           return cell
-       }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
+        
+        if flickrPhotos[indexPath.row].photo != nil {
+            cell.imageView.image = UIImage(data: flickrPhotos[indexPath.row].photo!)
+        } else {
+            cell.imageView.image = UIImage(named: "placeholder")
+            
+            DispatchQueue.global().async { [self] in
+                FlickrAPI.downloadImages(imageURL: URL(string: photoURL[indexPath.row])!) { [self] data, error in
+                    if let data = data {
+                        cell.imageView.image = UIImage(data: data)
+                        
+                        self.flickrPhotos[indexPath.row].photo = data
+                        self.dataController.autoSaveViewContext()
+                        if self.fetchedResultsController.fetchedObjects?.count == self.flickrPhotos.count {
+                            self.newCollectionButton.isEnabled = true
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
+        return cell
+    }
     
     
     
