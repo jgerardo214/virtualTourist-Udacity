@@ -119,7 +119,6 @@ class PhotoViewController: UIViewController, MKMapViewDelegate, UICollectionView
                     let image = Photo(context: self.dataController.viewContext)
                     image.pin = self.pin
                     flickrPhotos.append(image)
-                    flickrPhotos.append(pin.photos!)
                     let url = FlickrAPI.Endpoints.getPhotoURL(photo!.server, photo!.id, photo!.secret)
                     photoURL.append(url.stringURL)
                     
@@ -140,7 +139,7 @@ class PhotoViewController: UIViewController, MKMapViewDelegate, UICollectionView
     @IBAction func newCollectionButtonPressed(_ sender: Any) {
         newCollectionButton.isEnabled = false
         flickrPhotos = []
-        //photoURL = []
+        photoURL = []
         
         if let objects = fetchedResultsController.fetchedObjects {
             for object in objects {

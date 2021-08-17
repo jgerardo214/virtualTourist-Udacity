@@ -19,10 +19,9 @@ extension PhotoViewController: UICollectionViewDataSource, UICollectionViewDeleg
             cell.imageView.image = UIImage(named: "placeholder")
             
             DispatchQueue.global().async { [self] in
-                FlickrAPI.downloadImages(imageURL: URL(string: photoURL[indexPath.row])!) { [self] data, error in
+                FlickrAPI.downloadImages(imageURL: URL(string: photoURL[indexPath.row])!) { data, error in
                     if let data = data {
                         cell.imageView.image = UIImage(data: data)
-                        
                         self.flickrPhotos[indexPath.row].photo = data
                         self.dataController.autoSaveViewContext()
                         if self.fetchedResultsController.fetchedObjects?.count == self.flickrPhotos.count {
