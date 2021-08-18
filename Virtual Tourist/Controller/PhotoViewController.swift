@@ -17,6 +17,7 @@ class PhotoViewController: UIViewController, MKMapViewDelegate, UICollectionView
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var newCollectionButton: UIButton!
     @IBOutlet weak var noImagesLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     var coordinate: CLLocationCoordinate2D!
@@ -61,6 +62,7 @@ class PhotoViewController: UIViewController, MKMapViewDelegate, UICollectionView
         collectionView.dataSource = self
         collectionView.delegate = self
         setupFetchedResultsController()
+        activityIndicator.hidesWhenStopped = true
         noImagesLabel.isHidden = true
         FlickrAPI.flickrGETSearchPhotos(lat: pin.latitude, lon: pin.longitude, completionHandler: getImagesFromFlickr(photos:error:))
     }
@@ -130,6 +132,8 @@ class PhotoViewController: UIViewController, MKMapViewDelegate, UICollectionView
         }
         self.collectionView.reloadData()
         try? dataController.viewContext.save()
+        activityIndicator.stopAnimating()
+        
         
     }
     
