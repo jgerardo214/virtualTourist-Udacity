@@ -24,7 +24,7 @@ extension PhotoViewController: UICollectionViewDataSource, UICollectionViewDeleg
                 FlickrAPI.downloadImages(imageURL: URL(string: photoURL[indexPath.row])!) { data, error in
                     if let data = data {
                         cell.imageView.image = UIImage(data: data)
-                        cell.activityIndicator.hidesWhenStopped = true 
+                        cell.activityIndicator.hidesWhenStopped = true
                         self.flickrPhotos[indexPath.row].photo = data
                         cell.activityIndicator.stopAnimating()
                         self.dataController.autoSaveViewContext()
@@ -38,7 +38,7 @@ extension PhotoViewController: UICollectionViewDataSource, UICollectionViewDeleg
                 }
             }
         }
-        
+        cell.activityIndicator.stopAnimating()
         
         return cell
     }
