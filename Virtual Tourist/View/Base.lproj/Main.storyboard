@@ -50,10 +50,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4I2-9i-VZ2">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="271"/>
                             </mapView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="VRX-MC-eUB">
-                                <rect key="frame" x="197" y="438" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S48-Sg-gYq">
                                 <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -95,6 +91,10 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rdy-Mt-DoK">
                                                     <rect key="frame" x="0.0" y="-12" width="199" height="170"/>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="QoJ-fj-Eg2">
+                                                    <rect key="frame" x="89" y="69" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="rdy-Mt-DoK" secondAttribute="bottom" id="ROs-iK-kLu"/>
@@ -105,6 +105,7 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="199" height="158"/>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="QoJ-fj-Eg2" id="txp-87-h6T"/>
                                             <outlet property="imageView" destination="rdy-Mt-DoK" id="E6S-Vs-n5u"/>
                                         </connections>
                                     </collectionViewCell>
@@ -128,7 +129,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="D6V-qM-hKI"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="VRX-MC-eUB" id="fXh-9i-ciH"/>
                         <outlet property="collectionView" destination="ezd-2L-MBW" id="keN-B6-m1B"/>
                         <outlet property="mapView" destination="4I2-9i-VZ2" id="8ES-Cr-TQ0"/>
                         <outlet property="newCollectionButton" destination="S48-Sg-gYq" id="Jyk-2u-ypi"/>

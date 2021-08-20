@@ -27,8 +27,9 @@ class FlickrAPI {
         var stringURL: String {
             switch self {
             case .searchPhotos(let latitude, let longitude):
-            return
-                Endpoints.base + Endpoints.apiKeyParam + "&lat=\(latitude)" + "&lon=\(longitude)" + "&per_page=18&format=json&nojsoncallback=1"
+                       return
+                           Endpoints.base + Endpoints.apiKeyParam + "&lat=\(latitude)" + "&lon=\(longitude)" + "&per_page=18&format=json&nojsoncallback=1"
+                
             case .getPhotoURL(let server, let id, let secret):
             return
                 "https://live.staticflickr.com/\(server)/\(id)_\(secret)_c.jpg"

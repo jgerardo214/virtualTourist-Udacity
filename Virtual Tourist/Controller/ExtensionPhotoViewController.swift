@@ -13,26 +13,31 @@ extension PhotoViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
         
+        cell.activityIndicator.startAnimating()
+       
+        
         if flickrPhotos[indexPath.row].photo != nil {
             cell.imageView.image = UIImage(data: flickrPhotos[indexPath.row].photo!)
         } else {
             cell.imageView.image = UIImage(named: "placeholder")
-            
             DispatchQueue.global().async { [self] in
                 FlickrAPI.downloadImages(imageURL: URL(string: photoURL[indexPath.row])!) { data, error in
                     if let data = data {
                         cell.imageView.image = UIImage(data: data)
+                        cell.activityIndicator.hidesWhenStopped = true 
                         self.flickrPhotos[indexPath.row].photo = data
+                        cell.activityIndicator.stopAnimating()
                         self.dataController.autoSaveViewContext()
                         if self.fetchedResultsController.fetchedObjects?.count == self.flickrPhotos.count {
                             self.newCollectionButton.isEnabled = true
+                            
+                            
+                            
                         }
                     }
                 }
             }
         }
-        
-        
         
         
         return cell
@@ -48,8 +53,8 @@ extension PhotoViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         dataController.viewContext.delete(flickrPhotos[indexPath.row])
-        try? self.dataController.viewContext.save()
         flickrPhotos.remove(at: indexPath.row)
+        try? self.dataController.viewContext.save()
         collectionView.reloadData()
     }
     
