@@ -95,6 +95,7 @@ class FlickrAPI {
         sendGETRequest(url: Endpoints.searchPhotos(latitude: lat, longitude: lon).url, response: PhotoResponse.self) { (response, error) in
             if let response = response {
                 
+                
                 completionHandler(response.photos.photo, nil)
             } else {
                 completionHandler([], error)
