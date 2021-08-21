@@ -88,19 +88,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="199" height="158"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rdy-Mt-DoK">
-                                                    <rect key="frame" x="0.0" y="-12" width="199" height="170"/>
-                                                </imageView>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="QoJ-fj-Eg2">
-                                                    <rect key="frame" x="89" y="69" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="QoJ-fj-Eg2">
+                                                    <rect key="frame" x="140" y="60" width="20" height="39"/>
                                                 </activityIndicatorView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rdy-Mt-DoK">
+                                                    <rect key="frame" x="8" y="8" width="134" height="150"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="rdy-Mt-DoK" secondAttribute="bottom" id="ROs-iK-kLu"/>
-                                                <constraint firstAttribute="trailing" secondItem="rdy-Mt-DoK" secondAttribute="trailing" id="fPs-fw-Pjr"/>
-                                                <constraint firstItem="rdy-Mt-DoK" firstAttribute="leading" secondItem="4MV-Ys-BNK" secondAttribute="leading" id="mtN-5j-a3P"/>
-                                                <constraint firstItem="rdy-Mt-DoK" firstAttribute="top" secondItem="4MV-Ys-BNK" secondAttribute="top" constant="-12" id="ukV-mi-ohO"/>
+                                                <constraint firstAttribute="bottom" secondItem="QoJ-fj-Eg2" secondAttribute="bottom" constant="59" id="1sV-p7-ypj"/>
+                                                <constraint firstItem="rdy-Mt-DoK" firstAttribute="top" secondItem="4MV-Ys-BNK" secondAttribute="top" constant="8" id="4TB-8K-fDx"/>
+                                                <constraint firstAttribute="trailing" secondItem="rdy-Mt-DoK" secondAttribute="trailing" constant="57" id="b7D-No-6ab"/>
+                                                <constraint firstItem="QoJ-fj-Eg2" firstAttribute="leading" secondItem="4MV-Ys-BNK" secondAttribute="leading" constant="140" id="cJy-SC-KWg"/>
+                                                <constraint firstItem="rdy-Mt-DoK" firstAttribute="leading" secondItem="4MV-Ys-BNK" secondAttribute="leading" constant="8" id="cMg-HD-5Ru"/>
+                                                <constraint firstItem="QoJ-fj-Eg2" firstAttribute="top" secondItem="4MV-Ys-BNK" secondAttribute="top" constant="60" id="iDt-Nr-aWD"/>
+                                                <constraint firstAttribute="trailing" secondItem="QoJ-fj-Eg2" secondAttribute="trailing" constant="39" id="v1L-qA-rEA"/>
+                                                <constraint firstAttribute="bottom" secondItem="rdy-Mt-DoK" secondAttribute="bottom" id="xd7-A8-vq5"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="199" height="158"/>
@@ -137,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hur-XG-aHw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="110"/>
+            <point key="canvasLocation" x="1137.68115942029" y="109.82142857142857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Xv-HY-ZdG">

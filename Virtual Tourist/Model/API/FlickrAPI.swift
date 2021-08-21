@@ -28,7 +28,7 @@ class FlickrAPI {
             switch self {
             case .searchPhotos(let latitude, let longitude):
                        return
-                           Endpoints.base + Endpoints.apiKeyParam + "&lat=\(latitude)" + "&lon=\(longitude)" + "&per_page=18&format=json&nojsoncallback=1"
+                        Endpoints.base + Endpoints.apiKeyParam + "&lat=\(latitude)" + "&lon=\(longitude)" + "&page=\(Int.random(in: 1...10))per_page=18&format=json&nojsoncallback=1"
                 
             case .getPhotoURL(let server, let id, let secret):
             return
@@ -70,18 +70,6 @@ class FlickrAPI {
         task.resume()
     }
     
-//    class func getFlickrImages(server: String, id: String, secret: String, completionHandler: @escaping (Data?, Error?) -> Void) {
-//        let imageURL = Endpoints.getPhotoURL(server, id, secret).url
-//        
-//        
-//        let task = URLSession.shared.dataTask(with: imageURL) { data, response, error in
-//            DispatchQueue.main.async {
-//                completionHandler(data, error)
-//            }
-//        }
-//        task.resume()
-//    }
-    
     
     class func downloadImages(imageURL: URL, completionHandler: @escaping (Data?, Error?) -> Void) {
         
@@ -102,6 +90,7 @@ class FlickrAPI {
     
     
     class func flickrGETSearchPhotos(lat: Double, lon: Double, completionHandler: @escaping ([FlickrPhoto?], Error?) -> Void ) {
+        
         
         sendGETRequest(url: Endpoints.searchPhotos(latitude: lat, longitude: lon).url, response: PhotoResponse.self) { (response, error) in
             if let response = response {
